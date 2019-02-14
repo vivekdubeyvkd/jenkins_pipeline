@@ -1,3 +1,4 @@
+def COPY_JOB_URL = "<jenkins-url>/job/<job-name>/build"
 def callJenkinsJobWithFileParameter(){
     withCredentials([string(credentialsId: '<token_id>', variable: 'API_TOKEN')]) {
                 jsonObjectData = [ parameter : 
