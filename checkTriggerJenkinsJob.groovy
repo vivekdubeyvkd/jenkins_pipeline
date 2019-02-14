@@ -1,4 +1,4 @@
-def checkAndTriggerDownstreamJob(items, jobName) {
+def checkTriggerJenkinsJob(items, jobName) {
   for (item in items) {
     if (item.class.canonicalName != 'com.cloudbees.hudson.plugins.folder.Folder') {
         if(item.fullName == jobName.substring(jobName.indexOf('/') + 1)){
@@ -11,11 +11,11 @@ def checkAndTriggerDownstreamJob(items, jobName) {
         }  
       
     } else {     
-        checkAndTriggerDownstreamJob(((com.cloudbees.hudson.plugins.folder.Folder) item).getItems(), jobName)
+        checkTriggerJenkinsJob(((com.cloudbees.hudson.plugins.folder.Folder) item).getItems(), jobName)
     }
   }
 } 
 
 node{
-    checkAndTriggerDownstreamJob(Hudson.instance.items, '<job-name>')
+    checkTriggerJenkinsJob(Hudson.instance.items, '<job-name>')
 }
