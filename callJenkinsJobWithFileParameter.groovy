@@ -1,4 +1,4 @@
-def COPY_JOB_URL = "<jenkins-url>/job/<job-name>/build"
+def JOB_URL = "<jenkins-url>/job/<job-name>/build"
 def callJenkinsJobWithFileParameter(){
     withCredentials([string(credentialsId: '<token_id>', variable: 'API_TOKEN')]) {
                 jsonObjectData = [ parameter : 
@@ -11,7 +11,7 @@ def callJenkinsJobWithFileParameter(){
                 parsedJson = JsonOutput.toJson(jsonObjectData).replace("\"", "\\\"")
                 sh """
                     set +x 
-                    curl -s -k  -f "${COPY_JOB_URL}" -F file0=@<file-path> -F json="${parsedJson}" --user "<user-name>:${API_TOKEN}"
+                    curl -s -k  -f "${JOB_URL}" -F file0=@<file-path> -F json="${parsedJson}" --user "<user-name>:${API_TOKEN}"
                 """
     }    
 }
