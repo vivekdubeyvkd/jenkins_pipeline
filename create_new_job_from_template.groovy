@@ -11,7 +11,7 @@ def create_new_job_from_template(name, folderName, templateName){
             println newJob.getName()
             println 'Job created successfully'
         } else {
-            println 'Could not create template job or it do not exists'
+            println 'Could not create template job or it does not exists'
         }
     } catch(err) {
       println(err.message)
