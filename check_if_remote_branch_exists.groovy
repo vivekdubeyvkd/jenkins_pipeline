@@ -4,7 +4,7 @@ GITHUB_REPO = "<github repo under above org>"
 
 def check_remote_branch(branch_name){
     dir('repodir'){
-         c = ""
+         remote_branches = ""
          withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GITHUBPWD', usernameVariable: 'GITHUBUSER')]) {
             try{
                 sh """
