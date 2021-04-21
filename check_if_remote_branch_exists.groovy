@@ -15,6 +15,9 @@ def check_if_remote_git_branch(branch_name){
                    git remote set-url origin ${GIT_REPO_URL}
                 """
                 remote_branches = sh(returnStdout: true, script: "git ls-remote --heads origin ${branch_name}")
+                if(! remote_branches){
+                    error "Remote branch ${branch_name} doesn't exists on GitHub origin"
+                }   
             } catch(err){
                 error "Remote branch ${branch_name} doesn't exists on GitHub origin"
             }
