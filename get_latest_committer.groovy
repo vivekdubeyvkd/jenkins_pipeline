@@ -1,9 +1,9 @@
 latest_committer_details = ""
 
-def get_latest_commiter(clonedRepoDir, fileNamesList){
+def get_latest_commiter(clonedRepoDir, fileNamesList, branchName="master'){
      dir(clonedRepoDir) {
          for(index = 0; index < fileNamesList.size(); index++){
-             latest_commiter_email = sh(returnStdout: true, script: "git log -n 1 --pretty=format:%ae  -- ${fileName}").trim()
+             latest_commiter_email = sh(returnStdout: true, script: "git log -n 1 --pretty=format:%ae  origin/${branchName} -- ${fileName}").trim()
              if(latest_commiter_email =~ "@"){
                  latest_commiter_details_list = latest_commiter_email.split("@")
                  latest_committer = latest_commiter_details_list[0]
@@ -18,5 +18,12 @@ def get_latest_commiter(clonedRepoDir, fileNamesList){
 }
 
 // myRepoDir : directory underworkspace where I have cloned my repo
-// fileNamesList : fileName for which I want to find the latest committer
+// fileNamesList : fileName list for which I want to find the latest committer
+// here branchName will be taken as master                      
 get_latest_commiter(clonedRepoDir, fileNamesList)
+
+// myClonedRepoDir : directory underworkspace where I have cloned my repo
+// MyFileNamesList : fileName list for which I want to find the latest committerr                            
+// branchName is mybranch
+get_latest_commiter(myClonedRepoDir, MyFileNamesList, 'mybranch')                        
+                        
