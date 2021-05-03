@@ -7,7 +7,7 @@ def get_latest_commiter(clonedRepoDir, fileNamesList){
              if(latest_commiter_email =~ "@"){
                  latest_commiter_details_list = latest_commiter_email.split("@")
                  latest_committer = latest_commiter_details_list[0]
-                 latest_committer_details =  "${latest_committer} ${latest_commiter_email} ${fileName}" + "\\" + latest_committer_details 
+                 latest_committer_details =  "${latest_committer} ${latest_commiter_email} ${fileName}" + "\n" + latest_committer_details 
              }  
          }  
          echo """
