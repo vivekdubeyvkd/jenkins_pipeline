@@ -5,7 +5,7 @@ def stage1(){
 }
 
 def stage2(){
-   stage("stage2){
+   stage("stage2"){
        println("stage2 " + env.NAME)
    }
 }
